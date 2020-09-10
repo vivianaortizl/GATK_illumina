@@ -1,0 +1,657 @@
+#Whole genome data for 96 isolates of Macrophomina phaseolina
+#Author Viviana Ortiz
+
+#HPCC access 
+ssh -xy ortizviv@hpcc.msu.edu
+Password: Da16lr31
+
+#HPCC
+ncpus: Number of cpus (this is not used any more, use nodes=n instead).
+nodes=cpus
+cores=ppn?
+
+#Text Wrangler and FileZilla connection
+host: rsync.hpcc.msu.edu
+username:ortizviv
+Password: Da16lr31
+port:22
+path:/mnt/home/ortizviv/08312017_mp_whgenome/
+
+# In HPCC directory 
+08312017_mp_whgenome/08312017_rawdata
+
+#To download the data from RTSF on 09042017
+wget -r -np -nH --ask-password ftps://<username>@<hostname>/<directory_name>
+wget -r -np -nH --ask-password ftps://chilversm@titan.bch.msu.edu/20170818_DNASeq_PE
+
+#Transfer .html files to computer In local folder
+rsync -ave ssh ortizviv@rsync.hpcc.msu.edu:/mnt/home/ortizviv/08312017_mp_whgenome/08312017_rawdata/20170818_DNASeq_PE/FastQC/*.html .
+
+#Make a copy to work on, and save the original files as backup
+mkdir workdata_08312017
+cp /mnt/home/ortizviv/08312017_mp_whgenome/08312017_rawdata/20170818_DNASeq_PE/*.gz .
+
+#Change file names to right ones, initial submission file different from actual submission (info in excel file "fastq_files_raw"
+mv Dm13_S1_L001_R1_001.fastq.gz Dm13_R1.fastq.gz
+mv Dm13_S1_L001_R2_001.fastq.gz Dm13_R2.fastq.gz
+mv Et12_S13_L001_R1_001.fastq.gz Et12_R1.fastq.gz
+mv Et12_S13_L001_R2_001.fastq.gz Et12_R2.fastq.gz
+mv Et14_S26_L001_R1_001.fastq.gz Et14_R1.fastq.gz
+mv Et14_S26_L001_R2_001.fastq.gz Et14_R2.fastq.gz
+mv Et17_S38_L001_R1_001.fastq.gz Et17_R1.fastq.gz
+mv Et17_S38_L001_R2_001.fastq.gz Et17_R2.fastq.gz
+mv Et18_S49_L001_R1_001.fastq.gz Et18_R1.fastq.gz
+mv Et18_S49_L001_R2_001.fastq.gz Et18_R2.fastq.gz
+mv Et8_S61_L001_R1_001.fastq.gz Et8_R1.fastq.gz
+mv Et8_S61_L001_R2_001.fastq.gz Et8_R2.fastq.gz
+mv IN12_4_S73_L001_R1_001.fastq.gz IN12_4_R1.fastq.gz
+mv IN12_4_S73_L001_R2_001.fastq.gz IN12_4_R2.fastq.gz
+mv IN12_8_3_S85_L001_R1_001.fastq.gz IN12_8_3_R1.fastq.gz
+mv IN12_8_3_S85_L001_R2_001.fastq.gz IN12_8_3_R2.fastq.gz
+mv IN12_9_4_S2_L001_R1_001.fastq.gz IN12_9_4_R1.fastq.gz
+mv IN12_9_4_S2_L001_R2_001.fastq.gz IN12_9_4_R2.fastq.gz
+mv IN12_9_6_S14_L001_R1_001.fastq.gz IN12_9_6_R1.fastq.gz
+mv IN12_9_6_S14_L001_R2_001.fastq.gz IN12_9_6_R2.fastq.gz
+mv IN12_PO_3_S27_L001_R1_001.fastq.gz IN12_PO_3_R1.fastq.gz
+mv IN12_PO_3_S27_L001_R2_001.fastq.gz IN12_PO_3_R2.fastq.gz
+mv M_15_1_S39_L001_R1_001.fastq.gz M_15_1_R1.fastq.gz
+mv M_15_1_S39_L001_R2_001.fastq.gz M_15_1_R2.fastq.gz
+mv M_15_10_S50_L001_R1_001.fastq.gz M_15_10_R1.fastq.gz
+mv M_15_10_S50_L001_R2_001.fastq.gz M_15_10_R2.fastq.gz
+mv M_15_11_S62_L001_R1_001.fastq.gz M_15_11_R1.fastq.gz
+mv M_15_11_S62_L001_R2_001.fastq.gz M_15_11_R2.fastq.gz
+mv M_15_12_S74_L001_R1_001.fastq.gz M_15_12_R1.fastq.gz
+mv M_15_12_S74_L001_R2_001.fastq.gz M_15_12_R2.fastq.gz
+mv M_15_13_S86_L001_R1_001.fastq.gz M_15_13_R1.fastq.gz
+mv M_15_13_S86_L001_R2_001.fastq.gz M_15_13_R2.fastq.gz
+mv M_15_14_S3_L001_R1_001.fastq.gz M_15_14_R1.fastq.gz
+mv M_15_14_S3_L001_R2_001.fastq.gz M_15_14_R2.fastq.gz
+mv M_15_2_S15_L001_R1_001.fastq.gz M_15_2_R1.fastq.gz
+mv M_15_2_S15_L001_R2_001.fastq.gz M_15_2_R2.fastq.gz
+mv M_15_3_S28_L001_R1_001.fastq.gz M_15_3_R1.fastq.gz
+mv M_15_3_S28_L001_R2_001.fastq.gz M_15_3_R2.fastq.gz
+mv M_15_4_S40_L001_R1_001.fastq.gz M_15_4_R1.fastq.gz
+mv M_15_4_S40_L001_R2_001.fastq.gz M_15_4_R2.fastq.gz
+mv M_15_5_S51_L001_R1_001.fastq.gz M_15_5_R1.fastq.gz
+mv M_15_5_S51_L001_R2_001.fastq.gz M_15_5_R2.fastq.gz
+mv M_15_6_S63_L001_R1_001.fastq.gz M_15_6_R1.fastq.gz
+mv M_15_6_S63_L001_R2_001.fastq.gz M_15_6_R2.fastq.gz
+mv M_15_7_S75_L001_R1_001.fastq.gz M_15_7_R1.fastq.gz
+mv M_15_7_S75_L001_R2_001.fastq.gz M_15_7_R2.fastq.gz
+mv M_15_8_S87_L001_R1_001.fastq.gz M_15_8_R1.fastq.gz
+mv M_15_8_S87_L001_R2_001.fastq.gz M_15_8_R2.fastq.gz
+mv M_15_9_S4_L001_R1_001.fastq.gz M_15_9_R1.fastq.gz
+mv M_15_9_S4_L001_R2_001.fastq.gz M_15_9_R2.fastq.gz
+mv Md10_S16_L001_R1_001.fastq.gz Md10_R1.fastq.gz
+mv Md10_S16_L001_R2_001.fastq.gz Md10_R2.fastq.gz
+mv Md3_S29_L001_R1_001.fastq.gz Md3_R1.fastq.gz
+mv Md3_S29_L001_R2_001.fastq.gz Md3_R2.fastq.gz
+mv Md5_S41_L001_R1_001.fastq.gz Md5_R1.fastq.gz
+mv Md5_S41_L001_R2_001.fastq.gz Md5_R2.fastq.gz
+mv Md6_S52_L001_R1_001.fastq.gz Md6_R1.fastq.gz
+mv Md6_S52_L001_R2_001.fastq.gz Md6_R2.fastq.gz
+mv Md7_S64_L001_R1_001.fastq.gz Md7_R1.fastq.gz
+mv Md7_S64_L001_R2_001.fastq.gz Md7_R2.fastq.gz
+mv MP144_S76_L001_R1_001.fastq.gz MP144_R1.fastq.gz
+mv MP144_S76_L001_R2_001.fastq.gz MP144_R2.fastq.gz
+mv MP220_S88_L001_R1_001.fastq.gz MP220_R1.fastq.gz
+mv MP220_S88_L001_R2_001.fastq.gz MP220_R2.fastq.gz
+mv MP223_S5_L001_R1_001.fastq.gz MP223_R1.fastq.gz
+mv MP223_S5_L001_R2_001.fastq.gz MP223_R2.fastq.gz
+mv MP249_S17_L001_R1_001.fastq.gz MP249_R1.fastq.gz
+mv MP249_S17_L001_R2_001.fastq.gz MP249_R2.fastq.gz
+mv MP250_S30_L001_R1_001.fastq.gz MP250_R1.fastq.gz
+mv MP250_S30_L001_R2_001.fastq.gz MP250_R2.fastq.gz
+mv MP258_S42_L001_R1_001.fastq.gz MP258_R1.fastq.gz
+mv MP258_S42_L001_R2_001.fastq.gz MP258_R2.fastq.gz
+mv Mph_21_S53_L001_R1_001.fastq.gz Mph_21_R1.fastq.gz
+mv Mph_21_S53_L001_R2_001.fastq.gz Mph_21_R2.fastq.gz
+mv Mph_22_S65_L001_R1_001.fastq.gz Mph_22_R1.fastq.gz
+mv Mph_22_S65_L001_R2_001.fastq.gz Mph_22_R2.fastq.gz
+mv Mph_23_S77_L001_R1_001.fastq.gz Mph_23_R1.fastq.gz
+mv Mph_23_S77_L001_R2_001.fastq.gz Mph_23_R2.fastq.gz
+mv Mph_24_S89_L001_R1_001.fastq.gz Mph_24_R1.fastq.gz
+mv Mph_24_S89_L001_R2_001.fastq.gz Mph_24_R2.fastq.gz
+mv Mph_27_S6_L001_R1_001.fastq.gz Mph_27_R1.fastq.gz
+mv Mph_27_S6_L001_R2_001.fastq.gz Mph_27_R2.fastq.gz
+mv Mph_28_S18_L001_R1_001.fastq.gz Mph_28_R1.fastq.gz
+mv Mph_28_S18_L001_R2_001.fastq.gz Mph_28_R2.fastq.gz
+mv Mph_35_S31_L001_R1_001.fastq.gz Mph_35_R1.fastq.gz
+mv Mph_35_S31_L001_R2_001.fastq.gz Mph_35_R2.fastq.gz
+mv Mph_38_S43_L001_R1_001.fastq.gz Mph_38_R1.fastq.gz
+mv Mph_38_S43_L001_R2_001.fastq.gz Mph_38_R2.fastq.gz
+mv Mph_39_S54_L001_R1_001.fastq.gz Mph_39_R1.fastq.gz
+mv Mph_39_S54_L001_R2_001.fastq.gz Mph_39_R2.fastq.gz
+mv Mph_45_S66_L001_R1_001.fastq.gz Mph_45_R1.fastq.gz
+mv Mph_45_S66_L001_R2_001.fastq.gz Mph_45_R2.fastq.gz
+mv Mph_46_S78_L001_R1_001.fastq.gz Mph_46_R1.fastq.gz
+mv Mph_46_S78_L001_R2_001.fastq.gz Mph_46_R2.fastq.gz
+mv Mph_48_S90_L001_R1_001.fastq.gz Mph_48_R1.fastq.gz
+mv Mph_48_S90_L001_R2_001.fastq.gz Mph_48_R2.fastq.gz
+mv Mph_49_S7_L001_R1_001.fastq.gz Mph_49_R1.fastq.gz
+mv Mph_49_S7_L001_R2_001.fastq.gz Mph_49_R2.fastq.gz
+mv Mph_50_S19_L001_R1_001.fastq.gz Mph_50_R1.fastq.gz
+mv Mph_50_S19_L001_R2_001.fastq.gz Mph_50_R2.fastq.gz
+mv Mph_52_S32_L001_R1_001.fastq.gz Mph_52_R1.fastq.gz
+mv Mph_52_S32_L001_R2_001.fastq.gz Mph_52_R2.fastq.gz
+mv Mph_53_S44_L001_R1_001.fastq.gz Mph_53_R1.fastq.gz
+mv Mph_53_S44_L001_R2_001.fastq.gz Mph_53_R2.fastq.gz
+mv Mph_54_S55_L001_R1_001.fastq.gz Mph_54_R1.fastq.gz
+mv Mph_54_S55_L001_R2_001.fastq.gz Mph_54_R2.fastq.gz
+mv Mph_56_S67_L001_R1_001.fastq.gz Mph_56_R1.fastq.gz
+mv Mph_56_S67_L001_R2_001.fastq.gz Mph_56_R2.fastq.gz
+mv Mph_40_S79_L001_R1_001.fastq.gz Mph_40_R1.fastq.gz
+mv Mph_40_S79_L001_R2_001.fastq.gz Mph_40_R2.fastq.gz
+mv Mph_5_S91_L001_R1_001.fastq.gz Mph_5_R1.fastq.gz
+mv Mph_5_S91_L001_R2_001.fastq.gz Mph_5_R2.fastq.gz
+mv MpSDSU_S8_L001_R1_001.fastq.gz MpSDSU_R1.fastq.gz
+mv MpSDSU_S8_L001_R2_001.fastq.gz MpSDSU_R2.fastq.gz
+mv TN262_S20_L001_R1_001.fastq.gz TN262_R1.fastq.gz
+mv TN262_S20_L001_R2_001.fastq.gz TN262_R2.fastq.gz
+mv TN264_S33_L001_R1_001.fastq.gz TN270_R1.fastq.gz
+mv TN264_S33_L001_R2_001.fastq.gz TN270_R2.fastq.gz
+mv TN270_S21_L001_R1_001.fastq.gz TN279_R1.fastq.gz
+mv TN270_S21_L001_R2_001.fastq.gz TN279_R2.fastq.gz
+mv TN279_S56_L001_R1_001.fastq.gz TN280_R1.fastq.gz
+mv TN279_S56_L001_R2_001.fastq.gz TN280_R2.fastq.gz
+mv TN280_S68_L001_R1_001.fastq.gz TN380_R1.fastq.gz
+mv TN280_S68_L001_R2_001.fastq.gz TN380_R2.fastq.gz
+mv TN380_S80_L001_R1_001.fastq.gz TN4_R1.fastq.gz
+mv TN380_S80_L001_R2_001.fastq.gz TN4_R2.fastq.gz
+mv TN4_S92_L001_R1_001.fastq.gz TN5_R1.fastq.gz
+mv TN4_S92_L001_R2_001.fastq.gz TN5_R2.fastq.gz
+mv TN5_S9_L001_R1_001.fastq.gz TN501_R1.fastq.gz
+mv TN5_S9_L001_R2_001.fastq.gz TN501_R2.fastq.gz
+mv TN501_S22_L001_R1_001.fastq.gz TN550_R1.fastq.gz
+mv TN501_S22_L001_R2_001.fastq.gz TN550_R2.fastq.gz
+mv TN550_S34_L001_R1_001.fastq.gz W12_6_R1.fastq.gz
+mv TN550_S34_L001_R2_001.fastq.gz W12_6_R2.fastq.gz
+mv W12_6_S45_L001_R1_001.fastq.gz W23_R1.fastq.gz
+mv W12_6_S45_L001_R2_001.fastq.gz W23_R2.fastq.gz
+mv W23_S57_L001_R1_001.fastq.gz W25_R1.fastq.gz
+mv W23_S57_L001_R2_001.fastq.gz W25_R2.fastq.gz
+mv W25_S69_L001_R1_001.fastq.gz W3_5_R1.fastq.gz
+mv W25_S69_L001_R2_001.fastq.gz W3_5_R2.fastq.gz
+mv W3_5_S81_L001_R1_001.fastq.gz M16_1_R1.fastq.gz
+mv W3_5_S81_L001_R2_001.fastq.gz M16_1_R2.fastq.gz
+mv M16_1_S93_L001_R1_001.fastq.gz CR_Red_1_R1.fastq.gz
+mv M16_1_S93_L001_R2_001.fastq.gz CR_Red_1_R2.fastq.gz
+mv Mp_prov_73_S10_L001_R1_001.fastq.gz CR_Red_2B_R1.fastq.gz
+mv Mp_prov_73_S10_L001_R2_001.fastq.gz CR_Red_2B_R2.fastq.gz
+mv Mp_prov_74_S23_L001_R1_001.fastq.gz CR_Red_3_R1.fastq.gz
+mv Mp_prov_74_S23_L001_R2_001.fastq.gz CR_Red_3_R2.fastq.gz
+mv Mp_prov_75_S35_L001_R1_001.fastq.gz M11-12_R1.fastq.gz
+mv Mp_prov_75_S35_L001_R2_001.fastq.gz M11-12_R2.fastq.gz
+mv Mp_prov_76_S46_L001_R1_001.fastq.gz M13-26_R1.fastq.gz
+mv Mp_prov_76_S46_L001_R2_001.fastq.gz M13-26_R2.fastq.gz
+mv Mp_prov_77_S58_L001_R1_001.fastq.gz M14-31_R1.fastq.gz
+mv Mp_prov_77_S58_L001_R2_001.fastq.gz M14-31_R2.fastq.gz
+mv Mp_prov_78_S70_L001_R1_001.fastq.gz UPR-Mph-JD1_R1.fastq.gz
+mv Mp_prov_78_S70_L001_R2_001.fastq.gz UPR-Mph-JD1_R2.fastq.gz
+mv Mp_prov_79_S82_L001_R1_001.fastq.gz UPR-Mph-JD2_R1.fastq.gz
+mv Mp_prov_79_S82_L001_R2_001.fastq.gz UPR-Mph-JD2_R2.fastq.gz
+mv Mp_prov_80_S94_L001_R1_001.fastq.gz UPR-Mph-JD3_R1.fastq.gz
+mv Mp_prov_80_S94_L001_R2_001.fastq.gz UPR-Mph-JD3_R2.fastq.gz
+mv Mp_prov_81_S11_L001_R1_001.fastq.gz UPR-Mph-ISA2_R1.fastq.gz
+mv Mp_prov_81_S11_L001_R2_001.fastq.gz UPR-Mph-ISA2_R2.fastq.gz
+mv Mp_prov_82_S24_L001_R1_001.fastq.gz UPR-Mph-ISA3_R1.fastq.gz
+mv Mp_prov_82_S24_L001_R2_001.fastq.gz UPR-Mph-ISA3_R2.fastq.gz
+mv Mp_prov_83_S36_L001_R1_001.fastq.gz W-MISO2_3-6_R1.fastq.gz
+mv Mp_prov_83_S36_L001_R2_001.fastq.gz W-MISO2_3-6_R2.fastq.gz
+mv Mp_prov_84_S47_L001_R1_001.fastq.gz W-MISO2_4-10_R1.fastq.gz
+mv Mp_prov_84_S47_L001_R2_001.fastq.gz W-MISO2_4-10_R2.fastq.gz
+mv Mp_prov_85_S59_L001_R1_001.fastq.gz MI-SF_1-36_R1.fastq.gz
+mv Mp_prov_85_S59_L001_R2_001.fastq.gz MI-SF_1-36_R2.fastq.gz
+mv Mp_prov_86_S71_L001_R1_001.fastq.gz MI-SF_2-16_R1.fastq.gz
+mv Mp_prov_86_S71_L001_R2_001.fastq.gz MI-SF_2-16_R2.fastq.gz
+mv Mp_prov_87_S83_L001_R1_001.fastq.gz MI-SF_9-8_R1.fastq.gz
+mv Mp_prov_87_S83_L001_R2_001.fastq.gz MI-SF_9-8_R2.fastq.gz
+mv Mp_prov_88_S95_L001_R1_001.fastq.gz MI-SF_10-16_R1.fastq.gz
+mv Mp_prov_88_S95_L001_R2_001.fastq.gz MI-SF_10-16_R2.fastq.gz
+mv Mp_prov_89_S12_L001_R1_001.fastq.gz SAG5-4_R1.fastq.gz
+mv Mp_prov_89_S12_L001_R2_001.fastq.gz SAG5-4_R2.fastq.gz
+mv Mp_prov_90_S25_L001_R1_001.fastq.gz MISO171-1_R1.fastq.gz
+mv Mp_prov_90_S25_L001_R2_001.fastq.gz MISO171-1_R2.fastq.gz
+mv Mp_prov_91_S37_L001_R1_001.fastq.gz MISO171-2_R1.fastq.gz
+mv Mp_prov_91_S37_L001_R2_001.fastq.gz MISO171-2_R2.fastq.gz
+mv Mp_prov_92_S48_L001_R1_001.fastq.gz MISO171-3_R1.fastq.gz
+mv Mp_prov_92_S48_L001_R2_001.fastq.gz MISO171-3_R2.fastq.gz
+mv Mp_prov_93_S60_L001_R1_001.fastq.gz MISO171-4_R1.fastq.gz
+mv Mp_prov_93_S60_L001_R2_001.fastq.gz MISO171-4_R2.fastq.gz
+mv Mp_prov_94_S72_L001_R1_001.fastq.gz MISO171-5_R1.fastq.gz
+mv Mp_prov_94_S72_L001_R2_001.fastq.gz MISO171-5_R2.fastq.gz
+mv Mp_prov_95_S84_L001_R1_001.fastq.gz MISO171-7_R1.fastq.gz
+mv Mp_prov_95_S84_L001_R2_001.fastq.gz MISO171-7_R2.fastq.gz
+mv Mp_prov_96_S96_L001_R1_001.fastq.gz MISO171-8_R1.fastq.gz
+mv Mp_prov_96_S96_L001_R2_001.fastq.gz MISO171-8_R2.fastq.gz
+
+#Backup hard drive disk 
+#Setting hard drive
+diskutil erasedisk hfs+ External GPT /dev/disk2
+
+#Transfer .gz files to hard drive 
+
+#Raw files changed names to right ones in /Volumes/Viviana Ortiz NGS data/08312017_mp_wholegenome/raw_rightnames_08312017
+rsync -ave ssh ortizviv@rsync.hpcc.msu.edu:/mnt/home/ortizviv/08312017_mp_whgenome/workdata_08312017/*.gz .
+
+#Raw files wrong names (as downloaded from RTSF with names as in initial submission, the actual plate submitted
+was different, so, names don't correspond to actual isolate, DON'T USE FOR ANY DATA ANALYSIS) in /Volumes/Viviana Ortiz NGS data/08312017_mp_wholegenome/raw_wrongnames_08312017
+rsync -ave ssh ortizviv@rsync.hpcc.msu.edu:/*.gz .
+
+#Fastqc files (fastqc that I ran)
+rsync -ave ssh ortizviv@rsync.hpcc.msu.edu:/mnt/home/ortizviv/08312017_mp_whgenome/mp_fastqc_uncleaned/*.html .
+
+#MultiQc in fastqc output dir /mnt/home/ortizviv/08312017_mp_whgenome/mp_fastqc_uncleaned
+module load singularity
+module load multiQC/1.0
+multiqc .
+
+#check if file with files names for cutadapt is working 
+vi testfile #create a file in terminal, vi commands ":q" to exit  "i" to insert (edit) ":wq" to save and quite
+x=$(awk '{if (NR==1) print $1}' testfile) #print first line in file 
+echo ${x}.fdsaf # print first line plus something to check if the strange character is added or not
+cp testfile mp_filenames.txt #copy the file created in terminal to the txt file created in wrangler 
+echo "$(awk '{if (NR==1) print $1}' mp_filenames.txt).fsdf"
+
+#Check CPU time and walltime
+qstat -f 49458278[3] # number is the jobID
+ssh css-067 ps f -u $USER -o sid,pid,etime,time,pcpu,cmd
+
+#Cutadapt working: in MSU hpcc the newest version Cutadapt 1.16 runs loading Python, no need to load cutadapt
+module load Python3/3.5.0
+script for single file: cutadapt_Dm13.sh
+script for multiple files: runPipeline_cut.sh
+file with reads names called from script: mp_readnames.txt
+
+###Scripts used single file (1 pair of reads at a time) 
+bwa_index_genome #index genome for using in bwa_mem 
+bwa_mem_Dm13.sh # To map reads to ref genome
+flagstat_Dm13.sh # To get mapping statistics
+
+#For variant calling 
+sort_index_Dm13.sh # To sort and index .bam files (alignment files) output .bai files 
+index_genome_fai.sh # To index the genome to get a .fai indexed genome to use in gatk
+gatk_haplotypecaller_Dm13.sh  #To call variants using Haplotype caller (better than unified genotyper, takes longer)
+gatk_unifiedgenotyper_Dm13.sh #To call variants using unified genotyper
+
+##output genome maping Dm13
+6738031 + 0 in total (QC-passed reads + QC-failed reads)
+82409 + 0 secondary
+0 + 0 supplementary
+0 + 0 duplicates
+6308638 + 0 mapped (93.63%:-nan%)
+6655622 + 0 paired in sequencing
+3327811 + 0 read1
+3327811 + 0 read2
+5645882 + 0 properly paired (84.83%:-nan%)
+6148750 + 0 with itself and mate mapped
+77479 + 0 singletons (1.16%:-nan%)
+487082 + 0 with mate mapped to a different chr
+320628 + 0 with mate mapped to a different chr (mapQ>=5)
+
+###Scripts used for all read pairs at a time 
+1. Cutadapt: runPipeline_cut.sh, need a file with file names: mp_readnames.txt
+	Fastqc: mp_fastqc_cleaned.sh
+	Multiqc: In: /mnt/home/ortizviv/08312017_mp_whgenome/workdata_08312017/clean_reads/fastqc_cleaned_cutadapt
+	module load singularity
+	module load multiQC/1.0
+	multiqc .
+
+2. Index genome: bwa_index_genome #index genome for using in bwa_mem 
+3. Map reads to genome: bwa_mem_all.sh
+4. Mapping statistics: flagstat_all_each.sh #flagstat_all.sh just created 1 output file, mapping stats for all together?
+5. Sort and index mapping files (.bam): sort_index_all.sh *** Just worked the sort part, so do indexing separately in next step.
+   so, next time just use sort_all.sh
+6. Index bam files: index_all.sh 
+7. Index genome for gatk: index_genome_fai.sh # To index the genome to get a .fai indexed genome to use in gatk
+8. Call variants: (use one of them, compare results) 
+   gatk_haplotypecaller.all.sh #upgraded version of unified genotyper, better for calling indels, similar for calling SNPs
+   gatk_unifiedgenotyper.all.sh 
+   both worked but is not showing each sample in a column, so new scripts are 
+   gatk_haplotypecaller_96.sh 
+   gatk_unifiedgenotyper_96.sh 
+
+
+###Scripts used for all read pairs at a time  using masked genome (repeat masked)
+2. Index genome: bwa_index_masked_genome #index genome for using in bwa_mem #ok
+3. Map reads to genome: bwa_mem_masked_all.sh #ok
+4. Mapping statistics: flagstat_masked_all_each.sh #ok
+5. Sort mapping files (.bam): sort_masked_all.sh #ok
+6. Mark Duplicates: markduplicates_all.sh
+6. Index bam files: index_masked_all.sh
+7. Index genome for gatk: index_maskedgenome_fai.sh # To index the genome to get a .fai indexed genome to use in gatk #ok
+8. Call variants: (use one of them, compare results) 
+   gatk_haplotypecaller_masked_96.sh output mp96_MS6_masked_haplo.vcf
+   gatk_unifiedgenotyper_masked_96.sh output mp96_MS6_masked_uni.vcf
+
+
+####Final scripts by 051818
+1. Cutadapt: runPipeline_cut.sh, need a file with file names: mp_readnames.txt
+	Fastqc: mp_fastqc_cleaned.sh
+	Multiqc: In: /mnt/home/ortizviv/08312017_mp_whgenome/workdata_08312017/clean_reads/fastqc_cleaned_cutadapt
+	module load singularity
+	module load multiQC/1.0
+	multiqc .
+2. Index genome: bwa_index_masked_genome #index genome for using in bwa_mem #ok
+3. Map reads to genome: bwa_mem_masked_all.sh #ok
+4. Mapping statistics: flagstat_masked_all_each.sh #ok
+5. Sort mapping files (.bam): sort_masked_all.sh #ok
+6. Mark Duplicates: markduplicates_all.sh #Requires a lot of memory 
+-ValidateSamFiles: ValidateSamFile.sh #to check if bam files are complete and free of errors
+-Mapping statistics on deduplicated bam files: flagstat_dedup.sh #statistics deduplicated bam files 
+7. Index bam files: index_dedup_masked_all.sh
+8. Index genome for gatk: index_maskedgenome_fai.sh # To index the genome to get a .fai indexed genome to use in gatk #ok
+9. Call variants on individual files using HaplotypeCaller and -ERC GVCF: (use one of them, compare results)
+	gatk_haplotypecaller_dedup_indiv.sh #using version 3.7 just try first gatk 4 
+	gatk4_haplotypecaller_dedup_indiv #using version 4.0, it does not need to be installed by hpcc just download in a folder and call the jar as it is in the script
+10. Combine gvcfs: 
+	gatk4_combinegvcfs.sh
+11. Genotype gvcfs to perform joint genotyping: This tool is able to handle any ploidy (or mix of ploidies) intelligently; there is no need to specify ploidy for non-diploid organisms. Already specified in HaplotypeCaller
+	gatk4_genotypegvcfs.sh
+
+###Filtering vcf 
+gatk hard filters. Look first with R gvcfR to decide what filters to apply 
+12. Filtering with VariantFiltration
+gatk4_variantfiltration_haplo.sh
+13. Select variants with PASS filters
+gatk4_selectvariants
+
+
+###ngsep
+load java 1.8
+Scripts from Alvaro
+1.runMapping
+2.runNGSEP
+3.run Genotyping
+
+My pipeline for NGSEP
+In folder where ngsep.jar is:
+
+
+#Installing TASSEL to use for now to convert vcf to hapmap
+
+##02120202 did it again in /Users/vivianaortiz/Applications
+
+git --version
+git clone https://bitbucket.org/tasseladmin/tassel-5-standalone.git
+git pull
+
+To launch tassel: 
+in directory where TASSEL is: /Users/vivianaortiz/Applications/tassel-5-standalone
+
+./start_tassel.pl -Xmx4g #for GUI
+./run_pipeline.pl -Xmx5g #for command line, for example from terminal
+
+Compress vcf and keep the orginial vcf
+ gzip -c mp96_MS6_masked_uni.vcf > mp96_MS6_masked_uni.vcf.gz
+ 
+Subsetting the vcf to work in vcfR 
+if compressed
+ zgrep "^#" mp96_MS6_masked_uni.vcf.gz | gzip -c > header_uni.vcf.gz
+ zgrep "^contig_00001" mp96_MS6_masked_uni.vcf.gz > tmp.vcf.gz # Body
+ zcat header_uni.vcf.gz tmp.vcf.gz | gzip -c > c1_uni.vcf.gz
+ 
+if uncompressed 
+grep "^#" mp96_MS6_masked_uni.vcf > header.vcf # Meta
+grep "^contig_00001" mp96_MS6_masked_uni.vcf > tmp.vcf # Body
+cat header.vcf tmp.vcf > c1.vcf.gz
+
+
+===To decompress keeping the original 
+gunzip -c name.gz > output
+
+Subsetting the vcf to work in vcfR by haplotypecaller bwa mem and dedup
+largest contig 00163
+ zgrep "^#" MS6_96_dedup_haplo.vcf.gz | gzip -c > header_haplo.vcf.gz
+ zgrep "^contig_00163" MS6_96_dedup_haplo.vcf.gz | gzip -c > tmp163_haplo.vcf.gz # Body
+ zcat header_haplo.vcf.gz tmp163_haplo.vcf.gz | gzip -c > 062618_c163_haplo.vcf.gz
+ 
+ Second largest contig 00467
+ zgrep "^#" MS6_96_dedup_haplo.vcf.gz | gzip -c > header_haplo.vcf.gz
+ zgrep "^contig_00467" MS6_96_dedup_haplo.vcf.gz | gzip -c > tmp467_haplo.vcf.gz # Body
+ zcat header_haplo.vcf.gz tmp467_haplo.vcf.gz | gzip -c > 062618_c467_haplo.vcf.gz
+ 
+ 
+ Largest 16 contigs ###Did not work
+ zgrep -e '^contig_00163|^contig_00467|^contig_00500|^contig_00293|^contig_00035|^contig_00517|^contig_00207|^contig_00414|^contig_00267'|^contig_00526|^contig_00083|^contig_00387|^contig_00229|^contig_00337|^contig_00451' MS6_96_dedup_haplo.vcf.gz > tmp16_haplo.vcf.gz # Body
+ zcat header_haplo.vcf.gz tmp16_haplo.vcf.gz | gzip -c > largest16c_haplo.vcf.gz
+ 
+ ###070118 FILTERED SNPs VCF
+ zgrep "^#" MS6_96_dedup_haplo_filtered_SNP.vcf.gz | gzip -c > header_SNP.vcf.gz
+ zgrep "^contig_00467" MS6_96_dedup_haplo_filtered_SNP.vcf.gz | gzip -c > tmp467_SNP.vcf.gz # Body
+ zcat header_SNP.vcf.gz tmp467_SNP.vcf.gz | gzip -c > 070118_c467_SNP.vcf.gz
+
+Filtered VCF just SNPs 070118 FUll file
+ /// GENLIGHT OBJECT /////////
+
+ // 96 genotypes,  1,595,264 binary SNPs, size: 167.1 Mb
+ 3883304 (2.54 %) missing data
+
+ // Basic content
+   @gen: list of 96 SNPbin
+
+ // Optional content
+   @ind.names:  96 individual labels
+   @loc.names:  1595264 locus labels
+   @chromosome: factor storing chromosomes of the SNPs
+   @position: integer storing positions of the SNPs
+   @other: a list containing: elements without names 
+
+
+
+######Decompress vcf before filtering or anything in NGSEP
+
+
+===To decompress keeping the original 
+gunzip -c name.gz > output
+
+
+######Annotate vcf NGSEP
+
+time java -Xmx4g -jar /mnt/home/ortizviv/08312017_mp_whgenome/software/NGSEP/NGSToolsApp_2.1.5.jar  Annotate  MS6_96_dedup_haplo_filtered_SNP.vcf /mnt/home/ortizviv/08312017_mp_whgenome/workdata_08312017/GCA_000302655.1_MphMS6_1.0_genomic.gff /mnt/home/ortizviv/08312017_mp_whgenome/workdata_08312017/NGSEP_mpWGS/mp_MS6_2018/Macrophomina_phaseolina.allmasked.fasta > MS6_96_dedup_haplo_filtered_SNP_annotated.vcf &
+
+
+ =========NGSEP filtros ======This symbol "&" is just to liberate the console when running directly. Do not use when submitting jobs by qsub
+
+
+	-frs filter repetitive sequences #not done
+
+time java -Xmx4g -jar /mnt/home/ortizviv/08312017_mp_whgenome/software/NGSEP/NGSToolsApp_2.1.5.jar  FilterVCF -frs /data/projects/bean/WGSParentals/population/Pvulgaris218_repMasked.txt BeanGBSElite_Q40_annotated.vcf 1> BeanGBSElite_Q40_repMasked_annotated.vcf 2>BeanGBSElite_Q40_repMasked_annotated.log &
+
+	Min individuals genotyped #ok done
+	
+time java -Xmx4g -jar /mnt/home/ortizviv/08312017_mp_whgenome/software/NGSEP/NGSToolsApp_2.1.5.jar FilterVCF -minI 96 MS6_96_dedup_haplo_filtered_SNP.vcf 1> MS6_96_dedup_haplo_filtered_SNP_I96.vcf 2>  MS6_96_dedup_haplo_filtered_SNP_I96.log &
+
+	MAF individuals genotyped #ok done
+time java -Xmx4g -jar /mnt/home/ortizviv/08312017_mp_whgenome/software/NGSEP/NGSToolsApp_2.1.5.jar FilterVCF -minMAF 0.02 MS6_96_dedup_haplo_filtered_SNP_I96.vcf 1> MS6_96_dedup_haplo_filtered_SNP_I96_MAF002.vcf 2>  MS6_96_dedup_haplo_filtered_SNP_I96_MAF002.log &
+
+ 	Minimum genotyping quality score (GQ field for each genotype call in the vcf file) #ok done
+time java -Xmx4g -jar /mnt/home/ortizviv/08312017_mp_whgenome/software/NGSEP/NGSToolsApp_2.1.5.jar FilterVCF -q 40 MS6_96_dedup_haplo_filtered_SNP_I96_MAF002.vcf 1> MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40.vcf 2>  MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40.log & 
+ 
+ 	Keep only biallelic SNVs (-s) and Flag to filter sites in which only one allele is observed (-fi) #ok done separate  file to try 
+time java -Xmx4g -jar /mnt/home/ortizviv/08312017_mp_whgenome/software/NGSEP/NGSToolsApp_2.1.5.jar FilterVCF -s -fi MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40.vcf 1> MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40_sfi.vcf 2>  MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40_sfi.log &
+	
+	Distance between SNPs #ok done to reduce number of snps in the vcf for structure. To reduce computational load
+time java -Xmx4g -jar /mnt/home/ortizviv/08312017_mp_whgenome/software/NGSEP/NGSToolsApp_2.1.5.jar FilterVCF -d 1000 MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40_sfi.vcf 1> MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40_sfi_d1000.vcf 2> MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40_sfi_d1000.log &
+time java -Xmx4g -jar /mnt/home/ortizviv/08312017_mp_whgenome/software/NGSEP/NGSToolsApp_2.1.5.jar FilterVCF -d 100 MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40_sfi.vcf 1> MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40_sfi_d100.vcf 2> MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40_sfi_d100.log &
+-----------------------------------------------------------
+	Stats 
+time java -Xmx4g -cp /data/software/internal/NGSToolsApp_2.1.0.jar :/data/software/internal/PopVar.jar org.cgiar.popvariants.VariantsStatistics  BeanGBSMagicII_Q40_NoRep_Masked_Annotated.vcf T >  BeanGBSMagicII_Q40_NoRep_Masked_Annotated.Stats &
+
+
+
+time java -Xmx4g -jar /data/software/internal/NGSToolsApp_2.1.3.jar SummaryStats GBSIntrogression.vcf > GBSIntrogression.stats &
+
+
+
+---------------- 
+
+Sacar estadísticas de diversidad con NGSEP
+
+time java -Xmx4g -jar /data/software/internal/NGSToolsApp_2.1.3.jar DiversityStats file.vcf > file.div
+
+
+
+time java -Xmx4g -jar /data/software/internal/NGSToolsApp_2.1.3.jar FilterVCF -frs file.highOH file.vcf > file_noHighOH.vcf
+
+
+
+========Convert vcf to structure input #ok done
+
+java -jar NGSToolsApp_2.1.0.jar  ConvertVCF <OPTIONS> <INPUT_FILE> <OUTPUT_PREFIX>
+
+time java -Xmx10g -jar /mnt/home/ortizviv/08312017_mp_whgenome/software/NGSEP/NGSToolsApp_2.1.5.jar ConvertVCF -printStructure MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40.vcf  MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40 &
+
+time java -Xmx10g -jar /mnt/home/ortizviv/08312017_mp_whgenome/software/NGSEP/NGSToolsApp_2.1.5.jar ConvertVCF -printStructure MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40_sfi.vcf  MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40_sfi &
+
+time java -Xmx10g -jar /mnt/home/ortizviv/08312017_mp_whgenome/software/NGSEP/NGSToolsApp_2.1.5.jar ConvertVCF -printStructure MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40_sfi_d1000.vcf  MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40_sfi_d1000 &
+
+time java -Xmx10g -jar /mnt/home/ortizviv/08312017_mp_whgenome/software/NGSEP/NGSToolsApp_2.1.5.jar ConvertVCF -printStructure MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40_sfi_d100.vcf  MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40_sfi_d100 &
+
+
+===Remove a sample 
+
+time java -Xmx4g -jar /mnt/home/ortizviv/08312017_mp_whgenome/software/NGSEP/NGSToolsApp_2.1.5.jar FilterVCF -saf m1431.txt -fs MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40.vcf 1> MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40_sfi_m1431.vcf 2>  MS6_96_dedup_haplo_filtered_SNP_I96_MAF002_q40_sfi_m1431.log &
+
+
+=============Scripts Mph39 genome===================
+
+####Scripts by 071818 - 090718
+1. Cutadapt: runPipeline_cut.sh, need a file with file names: mp_readnames.txt
+	Fastqc: mp_fastqc_cleaned.sh
+	Multiqc: In: /mnt/home/ortizviv/08312017_mp_whgenome/workdata_08312017/clean_reads/fastqc_cleaned_cutadapt
+	module load singularity
+	module load multiQC/1.0
+	multiqc .
+2. Index genome: bwa_index_masked_genome #index genome for using in bwa_mem #ok 
+   Index genome bowtie: index_mp39genome_bowtie.sh # Have not done mapping with bowtie, did not finish script 
+3. Map reads to genome: bwa_mem_mp39R.sh #ok # W12-6 missing bam file, so made a script to run map just W12_6 #ok all 96 #checked W12-6 standard out files, seems mapping was done correctly
+
+#############ignore this: troubleshooting for W12_6############
+#run validate sam file directly in terminal for w12-6
+module load picardTools/1.89 
+module load Java/1.8.0_31
+java -Xmx6G -jar $PICARD/ValidateSamFile.jar I=W12_6_R1_masked.bam MODE=SUMMARY
+Found errors:
+## HISTOGRAM	java.lang.String
+Error Type	Count
+ERROR:HEADER_RECORD_MISSING_REQUIRED_TAG	1
+ERROR:MISSING_READ_GROUP	1
+ERROR:POORLY_FORMATTED_HEADER_TAG	3
+WARNING:RECORD_MISSING_READ_GROUP	6460824
+#Found the error, I forgot to change the -R instead of -R "@RG\tID:${line}\tSM:${line}\tPL:ILLUMINA\tLB:${line}\tPU:RTSF" is:
+-R "@RG\tID:W12_6_R1\tSM:W12_6_R1\tPL:ILLUMINA\tLB:W12_6_R1\tPU:RTSF" \
+   
+***Should add here a step of validate sam file, to avoid keep going with errors for some samples, and find out later
+steps 4-7 again just for W12-6
+3. Mapping again correcting -R command 
+bwa_mem_mp39R_W12_6.sh #ok
+-Validate sam file again # ok No errors found
+4. Flagstat
+module load SAMTools 
+samtools flagstat W12_6_R1_masked.bam #ok
+6460824 + 0 in total (QC-passed reads + QC-failed reads)
+93096 + 0 secondary
+0 + 0 supplementary
+0 + 0 duplicates
+5856340 + 0 mapped (90.64%:-nan%)
+6367728 + 0 paired in sequencing
+3183864 + 0 read1
+3183864 + 0 read2
+5105330 + 0 properly paired (80.18%:-nan%)
+5696362 + 0 with itself and mate mapped
+66882 + 0 singletons (1.05%:-nan%)
+556414 + 0 with mate mapped to a different chr
+332555 + 0 with mate mapped to a different chr (mapQ>=5)
+5. Sort
+module load SAMTools
+samtools sort -T /tmp/W12_6_R1_masked.sorted -o W12_6_R1_masked.sorted.bam W12_6_R1_masked.bam #ok 
+6. Mark Duplicates 
+Created an script bc it takes time running: markduplicates_mp39R_W12_6 #ok
+7.Index dedup bam
+module load SAMTools 
+samtools index W12_6_R1_dedup.bam #ok
+
+################################################################
+
+4. Mapping statistics: flagstat_mp39R.sh #ok 
+5. Sort mapping files (.bam): sort_masked_mp39R.sh # ok
+6. Mark Duplicates: markduplicates_mp39R.sh #Requires a lot of memory and not sure if is necessary. Have ~13% duplicates #ok
+-ValidateSamFiles: ValidateSamFile_mp39R.sh #to check if bam files are complete and free of errors#ok, checked and no error found in any (see standard out with more to see all)
+-Mapping statistics on deduplicated bam files: flagstat_dedup_mp39R.sh #statistics deduplicated bam files # ok
+7. Index bam files: index_dedup_mp39R.sh # to get .bai files # ok # Missing W12_6_R1_dedup.bam #ok solved error above
+8. Index genome for gatk: index_genome_fai_mp39R.sh # To index the genome to get a .fai indexed genome to use in gatk # ok 
+9. Call variants on individual files using HaplotypeCaller and -ERC GVCF: (use one of them, compare results)
+	gatk_haplotypecaller_dedup_indiv.sh #using version 3.7 just try first gatk 4 
+	gatk4_haplotypecaller_dedup_indiv #using version 4.0, it does not need to be installed by hpcc just download in a folder and call the jar as it is in the script # ok
+	### job 77: M14_31_R1 exceeded its walltime limit Job was aborted and job 74: CR_Red_3_R1 Job does not exist on node
+	#need to repeat those
+10. Combine gvcfs: 
+	gatk4_combinegvcfs_mp39r_exM1431.sh #combine gvcfs excluding M1431 #ok 9/12/18
+	gatk4_combinegvcfs_mp39r.sh #combine gvcfs all 96 #ok
+11. Genotype gvcfs to perform joint genotyping: This tool is able to handle any ploidy (or mix of ploidies) intelligently; there is no need to specify ploidy for non-diploid organisms. Already specified in HaplotypeCaller
+	gatk4_genotypegvcfs_mp39r.sh #R 092118
+	gatk4_genotypegvcfs_mp39R_excM1431.sh #R 092118
+
+###Filtering vcf 
+gatk hard filters. Look first with R gvcfR to decide what filters to apply 
+12. Filtering with VariantFiltration
+gatk4_variantfiltration_haplo.sh
+13. Select variants with PASS filters
+gatk4_selectvariants_haplo.sh
+
+Mp39R_95excM1431_dedup_haplo.vcf #raw file, no filters at all
+Scanning file to determine attributes.
+File attributes:
+  meta lines: 220
+  header_line: 221
+  variant count: 2720398
+  column count: 104
+Meta line 220 read in.
+All meta lines processed.
+gt matrix initialized.
+Character matrix gt created.
+  Character matrix gt rows: 2720398
+  Character matrix gt cols: 104
+  skip: 0
+  nrows: 2720398
+  row_num: 0
+Processed variant: 2720398
+All variants processed
+
+#Converting VCF data to a genlight object
+
+In vcfR2genlight(vcf) : Found 256745 loci with more than two alleles.
+Objects of class genlight only support loci with two alleles.
+256745 loci will be omitted from the genlight object.
+
+/// GENLIGHT OBJECT /////////
+
+ // 95 genotypes,  2,463,653 binary SNPs, size: 500.4 Mb
+ 64775379 (27.68 %) missing data
+
+ // Basic content
+   @gen: list of 95 SNPbin
+
+ // Optional content
+   @ind.names:  95 individual labels
+   @loc.names:  2463653 locus labels
+   @chromosome: factor storing chromosomes of the SNPs
+   @position: integer storing positions of the SNPs
+   @other: a list containing: elements without names 
+
+##########
+Back up hpcc to local hard disk in other file: hpcc_backup_tolocal.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
